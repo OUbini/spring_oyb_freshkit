@@ -24,7 +24,7 @@ public class SecurityController {
 	public String admin() {
 		log.info("/admin");
 		
-		return "/security/all";
+		return "/security/admin";
 	}
 	
 	@GetMapping("/all")

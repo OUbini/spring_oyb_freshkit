@@ -11,7 +11,7 @@
 	</appender>
 
 	<!-- Application Loggers -->
-	<logger name="edu.kosmo.ex">
+	<logger name="edu.kosmo.oyb">
 		<level value="info" />
 	</logger>
 

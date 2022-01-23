@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Controller
 public class HomeController {
 
@@ -38,9 +39,26 @@ public class HomeController {
 	@GetMapping("/login/loginForm")
 	public String loginForm() {
 
-		System.out.println("FreshKit login");
+		log.info("FreshKit login");
 
 		return "login/loginForm";
 	}
+	
+	@GetMapping("/myPage")
+	public String myPage() {
+		log.info("Mypage..");
+		return "/myPage";
+	}
+	
+	@GetMapping("/user/userHome")
+	public void userHome() {
+		log.info("userHome..");
+	}
+
+	@GetMapping("/admin/adminHome")
+	public void adminHome() {
+		log.info("adminHome..");
+	}
+
 
 }

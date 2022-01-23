@@ -22,17 +22,11 @@
       <constructor-arg ref="hikariConfig" />
    </bean>
    
-   <!-- 일단 주석처리한것 -->
-<!--    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
       <property name="dataSource" ref="dataSource"></property>
-   </bean> -->
-
-   <!-- mapperLocations을 특별히 지정하기 -->
-   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-      <property name="dataSource" ref="dataSource"/>
-   </bean>
+   </bean> 
    
-   <!-- mybatis:scan 해당 패키지 밑에 인터페이스는 전부 Mapper로 인식 -->
+   <!-- Mapper interface -->
    <mybatis-spring:scan base-package="edu.kosmo.oyb.mapper" />
    
    <!-- mybatis:scan 해당 패키지 밑에 있는 특정 인터페이스만 Mapper로 인식 -->

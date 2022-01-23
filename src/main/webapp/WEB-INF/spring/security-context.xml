@@ -7,11 +7,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-     <http auto-config="true" use-expressions="true">
+	<!-- 검사 URL -->
+    <http auto-config="true" use-expressions="true">
         <intercept-url pattern="/login/loginForm" access="permitAll" />
+        <intercept-url pattern="/add/**" access="permitAll" />
         <intercept-url pattern="/" access="permitAll" />
-		<intercept-url pattern="/security/member" access="hasRole('USER')" /> 
-        <intercept-url pattern="/security/admin" access="hasRole('ADMIN')" />   
+		<intercept-url pattern="/admin/**" access="hasRole('ADMIN')" /> 
+        <intercept-url pattern="/**" access="hasAnyRole('USER,ADMIN')" />   
         
         <!--로그인 페이지 커스텀 화-->
 		<form-login login-page="/login/loginForm"
@@ -24,18 +26,24 @@
 		<access-denied-handler error-page="/security/accessError"/>
 	</http>
 
+	<!-- 데이터 정보 가져오는 객체 생성 -->
     <beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
         <beans:property name="dataSource" ref="dataSource"/>
+        
     </beans:bean>
-   
-    <beans:bean id="customNoOpPasswordEncoder" class="edu.kosmo.oyb.security.CustomNoOpPasswordEncoder"/>
+
+	<!-- 암호화 객체 생성 -->
+	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+   	<!-- 암호화 사용하지 않는 객체 생성 (테스트용) -->
+    <!-- <beans:bean id="customNoOpPasswordEncoder" class="edu.kosmo.oyb.security.CustomNoOpPasswordEncoder"/> -->
+    
     <beans:bean id="customUserDetailsService" class="edu.kosmo.oyb.security.CustomUserDetailsService"/>
 
 	<!-- provider -->
    	<authentication-manager>
       <authentication-provider user-service-ref="customUserDetailsService">
-      <password-encoder ref="customNoOpPasswordEncoder"/>  
-
+      <password-encoder ref="bcryptPasswordEncoder"/>  
       </authentication-provider>
    	</authentication-manager>
     

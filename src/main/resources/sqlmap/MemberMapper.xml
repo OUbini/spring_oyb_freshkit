@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.kosmo.oyb.mapper.MemberMapper">
+
+	<resultMap id="memberMap" type="edu.kosmo.oyb.vo.MemberVO">
+		<result property="id" column="id" />
+		<result property="pw" column="pw" />
+		<collection property="authorityList" resultMap="authorityMap"></collection>
+	</resultMap>
+
+	<resultMap id="authorityMap" type="edu.kosmo.oyb.vo.AuthorityVO">
+		<result property="name" column="name" />
+		<result property="member_id" column="member_id" />
+	</resultMap>
+	
+	<select id="readMember" resultMap="memberMap">
+		select * from member , authority 
+		where member.id = authority.member_id and member.id = #{id}
+	</select>
+	
+
+</mapper>

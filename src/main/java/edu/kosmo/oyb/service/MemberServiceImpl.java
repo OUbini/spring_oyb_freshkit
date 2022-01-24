@@ -25,8 +25,11 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO getMember(String id) {
 		log.info("readMember..");
 		
+		
+		System.out.println("선생님이 여기에 값 가져오는지 확인해보라하심 id : " + id );
 		MemberVO memberVO = memberMapper.readMember(id);
 		memberVO.setAuthorityList(memberMapper.readAuthority(id));
+		log.info(memberVO);
 		
 		return memberVO;
 	}
@@ -34,9 +37,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void addMember(MemberVO memberVO) { //암호화 메소드
-		String pw = memberVO.getPw();
-		String encode = passEncoder.encode(pw);
+		log.info("addMember..");
+		log.info(memberVO);
 		
+		String pw = memberVO.getPw();
+				
+		String encode = passEncoder.encode(pw);
+				
 		memberVO.setPw(encode);
 		memberMapper.insertMember(memberVO);
 		memberMapper.insertAuthority(memberVO);		

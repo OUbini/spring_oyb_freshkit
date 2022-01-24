@@ -14,16 +14,51 @@
 
 <c:url value="/add/addMember" var="addMemberUrl" />
 <p>${addMemberUrl}</p>
-<form:form name="formMember" action="${addMemberUrl}" method="POST">
+<form:form name="frmMember" action="${addMemberUrl}" method="POST">
     <p>
     	<label for="id">아이디</label>
         <input type="text"  name="id" />
     </p>
-
     <p>
         <label for="pw">비밀번호</label>
         <input type="password" name="pw"/>
+    </p>    
+
+    <p>
+        <label for="name">이름</label>
+        <input type="text" name="name"/>
     </p>
+    
+     <p>
+        <label for="postnum">우편번호</label>
+        <input type="text" name="postnum"/>
+    </p>
+    
+    <p>
+        <label for="address">주소</label>
+        <input type="text" name="address"/>
+    </p>
+    
+    <p>
+        <label for="phone">휴대폰번호</label>
+        <input type="text" name="phone"/>
+    </p>
+    
+    <p>
+        <label for="birth2">생일</label>
+        <input type="text" name="birth2"/>
+    </p>
+
+    <p>
+        <label for="gender">성별</label>
+        <input type="text" name="gender"/>
+    </p>
+    
+    <p>
+        <label for="point">포인트</label>
+        <input type="hidden" name="point" value="0"/>
+    </p>
+
     <button type="submit" class="btn">가입하기</button>
 
 </form:form>

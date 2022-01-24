@@ -39,9 +39,11 @@ public class MemberVO {
 	private int postnum;
 	private String address;
 	private String phone;
-	private Timestamp date;
+	private Timestamp birth;
 	private String gender;
 	private int point;
+	
+	private String birth2;
 	
 	private List<AuthorityVO> authorityList;
 	

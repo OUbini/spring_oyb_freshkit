@@ -7,6 +7,14 @@
 	<resultMap id="memberMap" type="edu.kosmo.oyb.vo.MemberVO">
 		<result property="id" column="id" />
 		<result property="pw" column="pw" />
+		<result property="rank" column="rank" />
+		<result property="name" column="name" />
+		<result property="postnum" column="postnum" />
+		<result property="address" column="address" />
+		<result property="phone" column="phone" />
+		<result property="birth" column="birth" />
+		<result property="gender" column="gender" />
+		<result property="point" column="point" />	
 		<collection property="authorityList" resultMap="authorityMap"></collection>
 	</resultMap>
 

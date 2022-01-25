@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	Welcome FRESHKIT!  
 </h1>
 
 [<a href="<c:url value="/myPage" />">마이페이지</a>]
@@ -16,6 +16,10 @@
     [<a href="<c:url value="/add/addForm" />">회원가입</a>]
     [<a href="<c:url value="/user/userHome" />">유저 홈</a>]
     [<a href="<c:url value="/admin/adminHome" />">관리자 홈</a>]
+</h3>
+<h3>
+	[<a href="<c:url value="/board/notice" />">공지사항</a>]
+	[<a href="<c:url value="/board/ask" />">문의</a>]
 </h3>
 
 <P>  The time on the server is ${serverTime}. </P>

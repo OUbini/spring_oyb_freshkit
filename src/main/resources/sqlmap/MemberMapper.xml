@@ -28,5 +28,4 @@
 		where member.id = authority.member_id and member.id = #{id}
 	</select>
 	
-
 </mapper>

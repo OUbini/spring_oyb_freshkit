@@ -13,7 +13,7 @@
         <intercept-url pattern="/add/**" access="permitAll" />
         <intercept-url pattern="/" access="permitAll" />
 		<intercept-url pattern="/admin/**" access="hasRole('ADMIN')" /> 
-        <intercept-url pattern="/**" access="hasAnyRole('USER,ADMIN')" />   
+        <!-- <intercept-url pattern="/**" access="hasAnyRole('USER,ADMIN')" /> -->  
         
         <!--로그인 페이지 커스텀 화-->
 		<form-login login-page="/login/loginForm"
@@ -31,7 +31,7 @@
 	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 	</beans:bean>
    	<!-- 암호화 사용하지 않는 객체 생성 (테스트용) -->
-    <beans:bean id="customNoOpPasswordEncoder" class="edu.kosmo.oyb.security.CustomNoOpPasswordEncoder"/>
+    <!--<beans:bean id="customNoOpPasswordEncoder" class="edu.kosmo.oyb.security.CustomNoOpPasswordEncoder"/>-->
 
     <beans:bean id="customUserDetailsService" class="edu.kosmo.oyb.security.CustomUserDetailsService"/>   
 
@@ -43,7 +43,7 @@
 	<!-- provider -->
    	<authentication-manager>
       <authentication-provider user-service-ref="customUserDetailsService">
-      	<password-encoder ref="customNoOpPasswordEncoder"/>  
+      	<password-encoder ref="bcryptPasswordEncoder"/>  
       </authentication-provider>
    	</authentication-manager>
     

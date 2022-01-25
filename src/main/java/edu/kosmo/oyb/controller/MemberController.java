@@ -1,4 +1,4 @@
-package edu.kosmo.oyb;
+package edu.kosmo.oyb.controller;
 
 import javax.inject.Inject;
 

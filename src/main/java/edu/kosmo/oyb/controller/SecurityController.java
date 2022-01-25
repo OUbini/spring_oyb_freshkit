@@ -1,4 +1,4 @@
-package edu.kosmo.oyb;
+package edu.kosmo.oyb.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

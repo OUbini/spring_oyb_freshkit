@@ -24,7 +24,7 @@
    
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
       <property name="dataSource" ref="dataSource"></property>
-<!--       <property name="mapperLocations" value="classpath:/sqlmap/*.xml" /> -->
+      <property name="mapperLocations" value="classpath:/sqlmap/*.xml" /> 
    </bean> 
    
    <!-- Mapper interface -->
@@ -32,9 +32,9 @@
    
    <!-- mybatis:scan 해당 패키지 밑에 있는 특정 인터페이스만 Mapper로 인식 -->
    <!-- 일단 주석처리함 -->
-<!--    <mybatis-spring:scan base-package="edu.kosmo.oyb.mapper" annotation="org.apache.ibatis.annotations.Mapper" />
+<!--    <mybatis-spring:scan base-package="edu.kosmo.oyb.mapper" annotation="org.apache.ibatis.annotations.Mapper" /> -->
       
-   <context:component-scan base-package="edu.kosmo.oyb.service" /> -->
+   <context:component-scan base-package="edu.kosmo.oyb.service" />
    
       
 </beans>

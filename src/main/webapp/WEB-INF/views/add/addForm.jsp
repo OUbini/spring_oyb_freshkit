@@ -13,7 +13,6 @@
 <h1>회원가입</h1>
 
 <c:url value="/add/addMember" var="addMemberUrl" />
-<p>${addMemberUrl}</p>
 <form:form name="frmMember" action="${addMemberUrl}" method="POST">
     <p>
     	<label for="id">아이디</label>

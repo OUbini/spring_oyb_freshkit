@@ -44,7 +44,7 @@
 	          <button type="submit" class="btn btn-primary">로그인</button>
 	   </form:form>
 	      <div class="dropdown-divider"></div>
-	      <a class="dropdown-item" href="#">회원가입</a>
+	      <a class="dropdown-item" href="<c:url value="/add/addForm" />">회원가입</a>
 	  </div>
 
 </body>

@@ -16,7 +16,7 @@ import lombok.extern.log4j.Log4j;
 public class MemberServiceImpl implements MemberService {
 	
 	@Inject
-	private BCryptPasswordEncoder passEncoder;
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Inject
 	private MemberMapper memberMapper;
@@ -37,14 +37,20 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void addMember(MemberVO memberVO) { //암호화 메소드
-		log.info("addMember..");
-		log.info(memberVO);
+		
 		
 		String pw = memberVO.getPw();
-				
-		String encode = passEncoder.encode(pw);
+		String encode = passwordEncoder.encode(pw);
 				
 		memberVO.setPw(encode);
+		
+		//memberVO.setPw(BCrypt.hashpw(memberVO.getPw(), BCrypt.gensalt())); 이 방법도 안됨
+		if(passwordEncoder.matches(pw, encode)) {
+			System.out.println("비밀번호 일치oooooo");
+		}else {
+			System.out.println("비밀번호 불일치xxxxxx");
+		}
+		
 		memberMapper.insertMember(memberVO);
 		memberMapper.insertAuthority(memberVO);		
 	}

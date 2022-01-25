@@ -17,8 +17,8 @@
 
 <sec:authorize access="isAuthenticated()">
 	<h1>마이페이지</h1>
-	<p>환영합니다. : <sec:authentication property="principal.username" /> 님</p> 
-	<p>패스워드 : <sec:authentication property="principal.password" /></p> 
+	<p>환영합니다. : <sec:authentication property="principal.member.id" /> 님</p> 
+	<p>패스워드 : <sec:authentication property="principal.member.pw" /></p> 
 	<p>principal : <sec:authentication property="principal"/></p>
 	
     <form:form action="${pageContext.request.contextPath}/logout" method="POST">

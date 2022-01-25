@@ -54,7 +54,7 @@ public class CustomUserDetails implements UserDetails {
 	
 	public CustomUserDetails(MemberVO memberVO) {
 		
-		this(memberVO.getName(), memberVO.getId(), true, true, true, true, getAuth(memberVO));
+		this(memberVO.getPw(), memberVO.getId(), true, true, true, true, getAuth(memberVO));
 		this.member = memberVO;	
 	}
 	

@@ -19,5 +19,7 @@ public interface BoardMapper {
 	 * 문의
 	 */
 	List<BoardVO> getAskList(); //글목록
+	BoardVO readAsk(int id); //글보기
+	void insertAsk(BoardVO board); //글쓰기
 	
 }

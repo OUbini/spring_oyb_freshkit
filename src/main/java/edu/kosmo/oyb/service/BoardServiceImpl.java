@@ -35,4 +35,18 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.getAskList();
 	}
 	
+	@Override
+	public BoardVO readAsk(int id) {
+		log.info("readAsk()..");
+		
+		return boardMapper.readAsk(id);
+	}
+	
+	@Override
+	public void registerAsk(BoardVO board) {
+		log.info("register()..");
+		boardMapper.insertAsk(board);
+	}
+	
+	
 }

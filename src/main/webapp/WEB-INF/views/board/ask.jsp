@@ -24,21 +24,19 @@
 			<td>${ask.id}</td>
 			<td>
 				<c:forEach begin="1" end="${ask.bindent}"> [Re] </c:forEach>
- 				<a href="content_view?bid=${ask.member_id}">${ask.title}</a>
+ 				<a href="ask_view?id=${ask.id}">${ask.title}</a>
 			</td>
 			<td>${ask.member_id}</td>
 			<td>${ask.bdate}</td>
 			<td>${ask.hit}</td>	
 		</tr>	
 	</c:forEach>
-
-	<!-- 관리자만 작성할 수 있도록 할 예정		
+	
 	<tr>
 		<td colspan="5"> 
-			<a href="write_view">글작성</a>
+			<a href="ask_write_view">글작성</a>
 		</td>
 	</tr>
-	 -->
 </table>
 
 

@@ -16,4 +16,18 @@
       ]]>
 	</select>
 	
+	<select id="readAsk" resultType="edu.kosmo.oyb.vo.BoardVO">
+	  <![CDATA[
+      select * from board where boardtype_id = 2 and id = #{id}
+      ]]>
+	</select>
+	
+	<select id="insertAsk">
+	  <![CDATA[
+	  insert into board (id,title,category,content,bdate,hit,bgroup,bindent,bstep,boardtype_id,member_id,product_id)
+	  values (board_seq.nextval, #{title},'문의',#{content},sysdate,0,board_seq.currval,0,0,2,#{member_id},null)
+      ]]>
+	</select>
+	
+	
 </mapper>

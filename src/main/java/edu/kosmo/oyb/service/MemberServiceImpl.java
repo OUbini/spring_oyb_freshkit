@@ -43,14 +43,7 @@ public class MemberServiceImpl implements MemberService {
 		String encode = passwordEncoder.encode(pw);
 				
 		memberVO.setPw(encode);
-		
-		//memberVO.setPw(BCrypt.hashpw(memberVO.getPw(), BCrypt.gensalt())); 이 방법도 안됨
-		if(passwordEncoder.matches(pw, encode)) {
-			System.out.println("비밀번호 일치oooooo");
-		}else {
-			System.out.println("비밀번호 불일치xxxxxx");
-		}
-		
+
 		memberMapper.insertMember(memberVO);
 		memberMapper.insertAuthority(memberVO);		
 	}

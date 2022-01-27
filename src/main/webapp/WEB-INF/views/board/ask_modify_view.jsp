@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
@@ -10,28 +10,29 @@
 </head>
 
 <body>
-	<h1>글작성</h1>
-	<form:form action="/oyb/board/ask_write" method="post">
-		<table width="700" cellpadding="0" cellspacing="0" border="1">      
+	<h1>문의 글 수정</h1>
+	<form:form action="/oyb/board/ask_modify" method="post">
+		<table width="700" cellpadding="0" cellspacing="0" border="1">
+			<input type="hidden" name="id" value="${ask_modify_view.id}">      
 	         <tr>
-	            <td> 이름 </td>
-	            <td> <input type="text" name="member_id" size = "50"> </td>
+	            <td> 작성자 </td>
+	            <td> ${ask_modify_view.member_id} </td>
 	         </tr>
 	         <tr>
 	            <td> 제목 </td>
-	            <td> <input type="text" name="title" size = "50"> </td>
+	            <td> <input type="text" name="title" 
+	            value="${ask_modify_view.title}" size = "50"> </td>
 	         </tr>
 	         <tr>
 	            <td> 내용 </td>
-	            <td> <textarea name="content" rows="10" ></textarea> </td>
+	            <td> <textarea name="content" rows="10" >${ask_modify_view.content}</textarea> </td>
 	         </tr>
 	         <tr >
-	            <td colspan="2"> <input type="submit" value="등록"> 
+	            <td colspan="2"> <input type="submit" value="수정"> 
 	            &nbsp;&nbsp; <a href="<c:url value="/board/ask" />">목록보기</a></td>
-	         </tr>
-	      
+	         </tr>	      
 		</table>
-	</form:form>
+	</form:form>	
 
 	<h3>
 		[<a href="<c:url value="/" />">홈</a>]

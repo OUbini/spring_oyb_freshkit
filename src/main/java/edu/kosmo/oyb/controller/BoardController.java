@@ -93,7 +93,7 @@ public class BoardController {
 		log.info("/notice_reply_view..");
 		int id = board.getId();
 		model.addAttribute("notice_reply_view",boardService.readNotice(id));
-		return "board/ask_reply_view";
+		return "board/notice_reply_view";
 	}
 	
 	@PostMapping("/board/notice_reply") //공지사항게시판 답글 등록

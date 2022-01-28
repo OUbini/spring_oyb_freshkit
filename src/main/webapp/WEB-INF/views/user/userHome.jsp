@@ -10,6 +10,7 @@
 
 <body>
 
+
 <h1>유저 페이지 입니다.</h1>
 
 <p>principal: <sec:authentication property="principal"/></p>
@@ -17,7 +18,13 @@
 <p>사용자이름: <sec:authentication property="principal.member.name"/></p>
 <p>사용자등급: <sec:authentication property="principal.member.rank"/></p>
 <p>사용자우편번호: <sec:authentication property="principal.member.postnum"/></p>
-<p><a href="<c:url value="/" />">홈</a></p>
+
+<h3>[<a href="<c:url value="/" />">홈</a>]</h3>
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+	유저바보바보
+</sec:authorize>
+
 
 </body>
 </html>

@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
 		log.info("readMember..");
 		
 		
-		System.out.println("선생님이 여기에 값 가져오는지 확인해보라하심 id : " + id );
+		System.out.println("id : " + id );
 		MemberVO memberVO = memberMapper.readMember(id);
 		memberVO.setAuthorityList(memberMapper.readAuthority(id));
 		log.info(memberVO);

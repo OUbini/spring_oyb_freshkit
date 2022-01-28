@@ -24,38 +24,23 @@
 			<td>${notice.id}</td>
 			<td>
 				<c:forEach begin="1" end="${notice.bindent}"> [Re] </c:forEach>
- 				<a href="notice_view?id=${notice.id}">${notice.title}</a>
+ 				<a href="content_view?bid=${notice.member_id}">${notice.title}</a>
 			</td>
 			<td>${notice.member_id}</td>
 			<td>${notice.bdate}</td>
 			<td>${notice.hit}</td>	
 		</tr>	
-	</c:forEach>	
-	<tr>
-		<td colspan="5"> 
-			<a href="notice_write_view">글작성</a>
-		</td>
-	</tr>
-
-</table>
-
-	<c:if test="${pageMaker.pre}">
-		<a
-			href="${pageContext.request.contextPath}/board/notice${pageMaker.makeQuery(pageMaker.startPage - 1) }">«</a>
-	</c:if>
-
-	<!-- 링크를 걸어준다 1-10페이지까지 페이지를 만들어주는것  -->
-	<c:forEach var="idx" begin="${pageMaker.startPage }"
-		end="${pageMaker.endPage }">
-		<a
-			href="${pageContext.request.contextPath}/board/notice${pageMaker.makeQuery(idx)}">${idx}</a>
 	</c:forEach>
 
-	<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-		<a
-			href="${pageContext.request.contextPath}/board/notice${pageMaker.makeQuery(pageMaker.endPage +1) }">
-			» </a>
-	</c:if>
+	<!-- 관리자만 작성할 수 있도록 할 예정		
+	<tr>
+		<td colspan="5"> 
+			<a href="write_view">글작성</a>
+		</td>
+	</tr>
+	 -->
+</table>
+
 
 <h3>[<a href="<c:url value="/" />">홈</a>]</h3>
 

@@ -6,7 +6,6 @@
 <html lang="ko">
 <head>
 <title>문의 게시판</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -32,6 +31,7 @@
 	      
 		</table>
 	</form:form>
+
 
 	<h3>
 		[<a href="<c:url value="/" />">홈</a>]

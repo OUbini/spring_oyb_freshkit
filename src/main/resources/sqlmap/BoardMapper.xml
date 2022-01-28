@@ -4,11 +4,66 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.kosmo.oyb.mapper.BoardMapper">
 
-	<select id="getNoticeList" resultType="edu.kosmo.oyb.vo.BoardVO">
+	<select id="getNoticeListWithPaging" resultType="edu.kosmo.oyb.vo.BoardVO">
 	  <![CDATA[
-        select * from board where boardtype_id = 1 order by bgroup desc, bstep asc
+               SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT * FROM board where boardtype_id = 1 order by bgroup desc, bstep asc   
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}
       ]]>
 	</select>
+	
+		<select id="readNotice" resultType="edu.kosmo.oyb.vo.BoardVO">
+	  <![CDATA[
+        select * from board where boardtype_id = 1 and id = #{id}
+      ]]>
+	</select>
+	
+	<select id="insertNotice">
+	  <![CDATA[
+	    insert into board (id,title,category,content,bdate,hit,bgroup,bindent,bstep,boardtype_id,member_id,product_id)
+	    values (board_seq.nextval, #{title},'공지',#{content},sysdate,0,board_seq.currval,0,0,1,'admin',null)
+      ]]>
+	</select>
+
+	<select id="deleteNotice">
+	  <![CDATA[
+        delete from board where boardtype_id = 1 and id = #{id}
+      ]]>
+	</select>
+	
+	<select id="updateNotice">
+	  <![CDATA[
+        update board set title = #{title}, content = #{content} where boardtype_id = 1 and id = #{id}
+      ]]>
+	</select>
+	
+	<select id="updateShapeNotice">
+	  <![CDATA[
+        update board set bstep = bstep + 1 where bgroup =#{bgroup} and bstep > #{bstep}
+      ]]>
+	</select>
+	
+	<select id="insertReplyNotice">
+	  <![CDATA[
+	    insert into board (id,title,category,content,bdate,hit,bgroup,bindent,bstep,boardtype_id,member_id,product_id)
+	  values (board_seq.nextval, #{title},'공지',#{content},sysdate,0,#{bgroup},#{bindent}+1,#{bstep}+1,1,'admin',null)
+      ]]>
+	</select>
+
+	<select id="updateHitNotice">
+	  <![CDATA[
+		update board set hit = hit + 1 where id = #{id}
+      ]]>
+	</select>
+	
+	<select id="getNoticeTotalCount" resultType = "int">
+	<![CDATA[
+		select count(*) from board where boardtype_id = 1
+	]]>
+	</select>
+	
 	
 	<select id="getAskListWithPaging" resultType = "edu.kosmo.oyb.vo.BoardVO">
     <![CDATA[

@@ -31,12 +31,13 @@
 			<td>${notice.bdate}</td>
 			<td>${notice.hit}</td>	
 		</tr>	
-	</c:forEach>	
+	</c:forEach>
+	<sec:authorize access="hasRole('ROLE_ADMIN')">	
 	<tr>
 		<td colspan="5"><a href="notice_write_view">글작성</a>
 		</td>
 	</tr>
-
+	</sec:authorize>
 </table>
 
 	<c:if test="${pageMaker.pre}">

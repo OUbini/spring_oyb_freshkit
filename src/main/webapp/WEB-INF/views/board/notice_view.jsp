@@ -35,9 +35,11 @@
 		<tr>
 			<td>
 				&nbsp;&nbsp; <a href="<c:url value="/board/ask" />">목록보기</a>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
 				&nbsp;&nbsp; <a href="notice_delete?id=${notice_view.id}">삭제</a> 
 				&nbsp;&nbsp; <a href="notice_modify_view?id=${notice_view.id}">수정</a>
 				&nbsp;&nbsp; <a href="notice_reply_view?id=${notice_view.id}">답변</a>
+				</sec:authorize>
 			</td>
 		</tr>
 	</table>

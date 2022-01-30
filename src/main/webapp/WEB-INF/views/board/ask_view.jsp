@@ -39,7 +39,9 @@
 				&nbsp;&nbsp; <a href="<c:url value="/board/ask" />">목록보기</a>
 				&nbsp;&nbsp; <a href="ask_delete?id=${ask_view.id}">삭제</a> 
 				&nbsp;&nbsp; <a href="ask_modify_view?id=${ask_view.id}">수정</a>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
 				&nbsp;&nbsp; <a href="ask_reply_view?id=${ask_view.id}">답변</a>
+				</sec:authorize>
 			</td>
 		</tr>
 	</table>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.kosmo.oyb.mapper.ProductMapper">
+
+	<select id="getNoticeListWithPaging" resultType="edu.kosmo.oyb.vo.BoardVO">
+	  <![CDATA[
+               SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT * FROM board where boardtype_id = 1 order by bgroup desc, bstep asc   
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+      ]]>
+	</select>
+
+	<select id="getNoticeTotalCount" resultType = "int">
+	<![CDATA[
+		select count(*) from board where boardtype_id = 1
+	]]>
+	</select>
+	
+	
+	<select id="getAskListWithPaging" resultType = "edu.kosmo.oyb.vo.BoardVO">
+    <![CDATA[
+               SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT * FROM board where boardtype_id = 2 order by bgroup desc, bstep asc   
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}  
+    ]]>
+	</select>	
+	
+	<select id="readAsk" resultType="edu.kosmo.oyb.vo.BoardVO">
+	  <![CDATA[
+        select * from board where boardtype_id = 2 and id = #{id}
+      ]]>
+	</select>
+	
+	<select id="insertAsk">
+	  <![CDATA[
+	    insert into board (id,title,category,content,bdate,hit,bgroup,bindent,bstep,boardtype_id,member_id,product_id)
+	    values (board_seq.nextval, #{title},'문의',#{content},sysdate,0,board_seq.currval,0,0,2,#{member_id},null)
+      ]]>
+	</select>
+
+	<select id="deleteAsk">
+	  <![CDATA[
+        delete from board where boardtype_id = 2 and id = #{id}
+      ]]>
+	</select>
+	
+	<select id="updateAsk">
+	  <![CDATA[
+        update board set title = #{title}, content = #{content} where boardtype_id = 2 and id = #{id}
+      ]]>
+	</select>
+	
+	<select id="updateShapeAsk">
+	  <![CDATA[
+        update board set bstep = bstep + 1 where bgroup =#{bgroup} and bstep > #{bstep}
+      ]]>
+	</select>
+	
+	<select id="insertReplyAsk">
+	  <![CDATA[
+	    insert into board (id,title,category,content,bdate,hit,bgroup,bindent,bstep,boardtype_id,member_id,product_id)
+	  values (board_seq.nextval, #{title},'답변',#{content},sysdate,0,#{bgroup},#{bindent}+1,#{bstep}+1,2,'admin',null)
+      ]]>
+	</select>
+
+	<select id="updateHitAsk">
+	  <![CDATA[
+		update board set hit = hit + 1 where id = #{id}
+      ]]>
+	</select>
+	
+	<select id="getAskTotalCount" resultType = "int">
+	<![CDATA[
+		select count(*) from board where boardtype_id = 2
+	]]>
+	</select>
+
+
+	
+</mapper>

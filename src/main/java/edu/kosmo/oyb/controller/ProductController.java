@@ -27,10 +27,22 @@ public class ProductController {
 	@Inject
 	private ProductService productService;
 
-	@GetMapping("/product/allProduct") //공지사항게시판으로 이동
+	@GetMapping("/product/allProduct") //전체제품목록으로 이동
 	public void allProduct(Model model) {
 		log.info("/allProduct..");
 		model.addAttribute("allProductList",productService.getAllProductList());
 	}
+	
+	@GetMapping("/product/bestProduct") //베스트제품목록으로 이동
+	public void bestProduct(Model model) {
+		log.info("/bestProduct..");
+		model.addAttribute("bestProductList",productService.getBestProductList());
+	}
 
+	@GetMapping("/product/newProduct") //베스트제품목록으로 이동
+	public void newProduct(Model model) {
+		log.info("/newProduct..");
+		model.addAttribute("newProductList",productService.getNewProductList());
+	}
+	
 }

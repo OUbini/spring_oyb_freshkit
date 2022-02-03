@@ -26,6 +26,8 @@
 	[<a href="<c:url value="/board/notice" />">공지사항</a>]
 	[<a href="<c:url value="/board/ask" />">문의</a>]
 	[<a href="<c:url value="/product/allProduct" />">전체제품목록</a>]
+	[<a href="<c:url value="/product/bestProduct" />">베스트제품목록</a>]	
+	[<a href="<c:url value="/product/newProduct" />">신제품목록</a>]	
 </h3>
 
 <P>  The time on the server is ${serverTime}. </P>

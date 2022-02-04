@@ -3,6 +3,7 @@ package edu.kosmo.oyb.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import edu.kosmo.oyb.page.Criteria;
@@ -20,7 +21,11 @@ public interface ProductMapper {
 	@Select("select * from product order by id desc")
 	List<ProductVO> getNewProduct(); //신제품목록 불러오기
 	
-	List<ProductVO> getCategoryProductWithPaging(Criteria criteria,ProductVO product); //제품종류별목록 불러오기
+	
+	List<ProductVO> getCategoryProductWithPaging
+	(@Param("pageNum")int pageNum,@Param("amount")int amount,@Param("category")ProductVO product); //제품종류별목록 불러오기
+	int getCategoryProductTotalCount();
+	
 	//ProductVO getProductDetail(ProductVO product);//제품상세정보 불러오기
 	//void insertProduct(ProductVO product); //제품등록
 	

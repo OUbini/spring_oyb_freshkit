@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.kosmo.oyb.page.Criteria;
+import edu.kosmo.oyb.page.PageVO;
 import edu.kosmo.oyb.service.ProductService;
+import edu.kosmo.oyb.vo.ProductVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -44,5 +47,16 @@ public class ProductController {
 		log.info("/newProduct..");
 		model.addAttribute("newProductList",productService.getNewProductList());
 	}
+	
+	@GetMapping("/product/categoryProduct") //
+	public void categoryProduct(Model model,ProductVO product,Criteria criteria) {
+		log.info("/categoryProduct..");
+		
+		model.addAttribute("categoryProductList",productService.getCategoryProductList(criteria,product));
+		int total = productService.getCategoryProductTotal();
+		log.info("선택한 카테고리 게시판 총 글 갯수 : " + total);
+		model.addAttribute("pageMaker", new PageVO(criteria,total));	
+	}
+	
 	
 }

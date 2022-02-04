@@ -17,14 +17,29 @@
 		<td>제품금액</td>
 	</tr>
 			
-	<c:forEach var="newProduct" items="${newProductList}">
+	<c:forEach var="categoryProduct" items="${categoryProductList}">
 		<tr>
-			<td>${newProduct.name}</td>
-			<td>${newProduct.amount}</td>
+			<td>${categoryProduct.name}</td>
+			<td>${categoryProduct.amount}</td>
 		</tr>	
 	</c:forEach>
 </table>
 
+<%-- 	<c:if test="${pageMaker.pre}">
+		<a href="${pageContext.request.contextPath}/product/categoryProduct?category=${categoryProductList.category}${pageMaker.makeQuery(pageMaker.startPage - 1) }">
+		«</a>
+	</c:if>
+
+	<c:forEach var="idx" begin="${pageMaker.startPage }"
+		end="${pageMaker.endPage }">
+		<a href="${pageContext.request.contextPath}/product/categoryProduct?category=${categoryProductList.category}${pageMaker.makeQuery(idx)}">${idx}</a>
+	</c:forEach>
+
+	<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+		<a href="${pageContext.request.contextPath}/product/categoryProduct?category=${categoryProductList.category}${pageMaker.makeQuery(pageMaker.endPage +1) }">
+		»</a>
+	</c:if>
+ --%>
 <h3>[<a href="<c:url value="/" />">홈</a>]</h3>
 
 

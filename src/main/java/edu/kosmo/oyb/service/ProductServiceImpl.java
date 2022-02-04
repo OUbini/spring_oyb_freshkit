@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.kosmo.oyb.mapper.ProductMapper;
+import edu.kosmo.oyb.page.Criteria;
 import edu.kosmo.oyb.vo.ProductVO;
 import lombok.extern.log4j.Log4j;
 
@@ -36,5 +37,18 @@ public class ProductServiceImpl implements ProductService {
 		log.info("getNewProductList()..");
 		return productMapper.getNewProduct();
 	}
+	
+	@Override
+	public List<ProductVO> getCategoryProductList(Criteria criteria, ProductVO product){
+		log.info("getCategoryProductList()..");
+		return productMapper.getCategoryProductWithPaging(criteria, product);
+	}
+	
+	@Override
+	public int getCategoryProductTotal() {
+		log.info("getCategoryProductTotal()..");
+		return productMapper.getCategoryProductTotalCount();
+	}
+	
 
 }
